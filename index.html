@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>FRUITS ZIPPER Goods Closet</title>
+<style>
+:root{--bg:#fff8fb;--text:#3a2e39;--sub:#8c7a89;--pink:#ff6b9d;--border:#f3d9e5}
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,sans-serif}
+body{background:var(--bg);color:var(--text);padding-bottom:50px}
+.rb{height:6px;background:linear-gradient(90deg,#ff3b3b,#ff8c00,#ffd700,#32cd32,#00bfff,#9370db,#ff69b4)}
+header{background:#fff;padding:16px;text-align:center;border-bottom:2px dashed var(--border)}
+.sub{font-size:11px;font-weight:800;color:var(--pink)}
+h1{font-size:20px;font-weight:900;margin:4px 0}
+.tag{font-size:12px;color:var(--sub);font-weight:600}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px 14px}
+.sbox{background:#fff;border-radius:14px;padding:10px 6px;text-align:center;border:2px solid var(--border)}
+.snum{font-size:20px;font-weight:900;color:var(--pink)}
+.slbl{font-size:10px;font-weight:700;color:var(--sub);margin-top:2px}
+.tabs{display:flex;gap:6px;padding:0 14px 10px}
+.tbtn{flex:1;padding:10px 4px;border-radius:12px;background:#fff;color:var(--sub);font-size:12px;font-weight:800;border:2px solid var(--border)}
+.tbtn.act{background:var(--pink);color:#fff;border-color:var(--pink)}
+.tbtn.add{background:#ffebf2;color:var(--pink);border-color:var(--pink)}
+.fbar{display:flex;gap:6px;overflow-x:auto;padding:4px 14px 10px}
+.chip{white-space:nowrap;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:800;background:#fff;border:1.5px solid var(--border);color:var(--sub)}
+.chip.act{background:#3a2e39;color:#fff}
+.con{padding:0 14px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.card{background:#fff;border-radius:16px;overflow:hidden;border:2.5px solid var(--mc,var(--border));display:flex;flex-direction:column}
+.cimg{width:100%;aspect-ratio:1/1;background:#fdf2f7;display:flex;align-items:center;justify-content:center;position:relative}
+.cimg img{width:100%;height:100%;object-fit:cover}
+.bdg{position:absolute;top:6px;left:6px;font-size:10px;font-weight:800;padding:3px 8px;border-radius:10px;color:#fff}
+.owned{background:#32cd32}.unowned{background:#9b5de5}.trade{background:#ff6b9d}
+.qty{position:absolute;bottom:6px;right:6px;background:rgba(0,0,0,.65);color:#fff;font-size:10px;padding:2px 7px;border-radius:8px}
+.cbody{padding:8px 10px;flex:1;display:flex;flex-direction:column}
+.tmem{font-size:10px;font-weight:800;padding:2px 6px;border-radius:6px;color:#fff;background:var(--mc)}
+.tcat{font-size:10px;padding:2px 6px;border-radius:6px;background:#f4eef2}
+.ctitle{font-size:12px;font-weight:800;margin:4px 0;flex:1}
+.cact{display:flex;gap:4px;border-top:1px solid #f5ebf0;padding-top:6px}
+.bmini{flex:1;border:none;background:#f8f0f4;font-size:10px;font-weight:800;padding:6px 0;border-radius:8px}
+.fcard{background:#fff;border-radius:18px;padding:16px;border:2px solid var(--pink)}
+.fg{margin-bottom:12px}
+.fl{display:block;font-size:11px;font-weight:800;color:var(--sub);margin-bottom:4px}
+.fi{width:100%;padding:10px;border:2px solid var(--border);border-radius:12px;font-size:14px;background:#fff}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btnp{width:100%;background:var(--pink);color:#fff;border:none;padding:12px;border-radius:12px;font-size:13px;font-weight:900}
+.btng{width:100%;background:linear-gradient(90deg,#ff6b9d,#9b5de5);color:#fff;border:none;padding:13px;border-radius:12px;font-size:13px;font-weight:900}
+.msec{background:#fff;border-radius:16px;padding:12px;margin-bottom:12px;border-left:6px solid var(--mc)}
+.tbox{background:#fff;border-radius:16px;padding:14px;border:2px solid var(--pink);margin-bottom:14px}
+.fbox{margin:24px 14px 0;background:#fff;border-radius:16px;padding:16px;border:1.5px solid var(--border);font-size:11px;color:var(--sub);line-height:1.6}
+.bbtn{flex:1;padding:10px;border-radius:10px;border:1.5px solid var(--pink);background:#fff;color:var(--pink);font-size:11px;font-weight:800;text-align:center}
+</style>
+</head>
+<body>
+<div class="rb"></div>
+<header>
+  <div class="sub">FRUITS ZIPPER COLLECTION</div>
+  <h1>Goods Closet</h1>
+  <div class="tag">わたしだけの推し活グッズ図鑑</div>
+</header>
+<div class="stats">
+  <div class="sbox"><div class="snum" id="st1">0</div><div class="slbl">登録グッズ</div></div>
+  <div class="sbox"><div class="snum" id="st2">0</div><div class="slbl">所持数</div></div>
+  <div class="sbox"><div class="snum" id="st3">0</div><div class="slbl">交換に出せる</div></div>
+</div>
+<div class="tabs">
+  <button type="button" class="tbtn act" id="tab-all">グッズ一覧</button>
+  <button type="button" class="tbtn add" id="tab-add">＋ 登録</button>
+  <button type="button" class="tbtn" id="tab-mem">メンバー別</button>
+  <button type="button" class="tbtn" id="tab-trd">交換リスト</button>
+</div>
+<div id="fa">
+  <div class="fbar" id="sbar">
+    <button type="button" class="chip act" data-s="all">すべて</button>
+    <button type="button" class="chip" data-s="owned">所持</button>
+    <button type="button" class="chip" data-s="unowned">未所持(求)</button>
+    <button type="button" class="chip" data-s="trade">交換可(譲)</button>
+  </div>
+  <div class="fbar" id="cbar">
+    <button type="button" class="chip act" data-c="all">全種別</button>
+    <button type="button" class="chip" data-c="生写真">生写真</button>
+    <button type="button" class="chip" data-c="アクスタ">アクスタ</button>
+    <button type="button" class="chip" data-c="缶バッジ">缶バッジ</button>
+    <button type="button" class="chip" data-c="トレカ">トレカ</button>
+    <button type="button" class="chip" data-c="その他">その他</button>
+  </div>
+</div>
+<div class="con">
+  <div id="v-all">
+    <div style="font-size:13px;font-weight:800;margin:6px 0 10px;">コレクション <span id="cnt">0</span>件</div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="v-add" style="display:none;">
+    <div class="fcard">
+      <div style="font-size:15px;font-weight:900;text-align:center;margin-bottom:12px;color:var(--pink);">グッズを登録・編集</div>
+      <input type="hidden" id="eid">
+      <div class="fg"><label class="fl">グッズ名（必須）</label><input type="text" id="fn" class="fi" placeholder="例：生写真 衣装A"></div>
+      <div class="r2">
+        <div class="fg"><label class="fl">メンバー</label><select id="fm" class="fi"><option value="月足天音">月足天音 (赤)</option><option value="鎮西寿々歌">鎮西寿々歌 (橙)</option><option value="櫻井優衣">櫻井優衣 (緑)</option><option value="仲川瑠夏">仲川瑠夏 (紫)</option><option value="真中まな">真中まな (水色)</option><option value="松本かれん">松本かれん (ピンク)</option><option value="早瀬ノエル">早瀬ノエル (黄)</option><option value="全員・集合">全員・集合</option></select></div>
+        <div class="fg"><label class="fl">種別</label><select id="fc" class="fi"><option>生写真</option><option>アクスタ</option><option>缶バッジ</option><option>トレカ</option><option>その他</option></select></div>
+      </div>
+      <div class="r2">
+        <div class="fg"><label class="fl">ステータス</label><select id="fs" class="fi"><option value="owned">所持</option><option value="trade">交換可（譲）</option><option value="unowned">未所持（求）</option></select></div>
+        <div class="fg"><label class="fl">所持数</label><input type="number" id="fq" class="fi" value="1" min="0"></div>
+      </div>
+      <div class="fg"><label class="fl">写真</label><input type="file" id="fimg" accept="image/*" class="fi"></div>
+      <div class="fg"><label class="fl">メモ</label><input type="text" id="fmm" class="fi" placeholder="例：ヨリ、サイン入り"></div>
+      <div style="display:flex;gap:8px;margin-top:16px;">
+        <button type="button" class="tbtn" id="btn-back">戻る</button>
+        <button type="button" class="btnp" style="flex:2;" id="btn-save">保存する</button>
+      </div>
+    </div>
+  </div>
+  <div id="v-mem" style="display:none;"></div>
+  <div id="v-trd" style="display:none;">
+    <div class="tbox">
+      <div style="font-size:13px;font-weight:900;color:var(--pink);margin-bottom:8px;">交換一覧画像メーカー（「譲」「求」スタンプ付き）</div>
+      <button type="button" class="btng" id="btn-gen">交換一覧画像を自動作成する</button>
+      <div id="iout" style="display:none;text-align:center;margin-top:12px;padding-top:12px;border-top:2px dashed var(--border);">
+        <div style="font-size:11px;font-weight:800;color:var(--pink);">▼ 画像を長押しして「"写真"に保存」してね！</div>
+        <img id="gimg" style="width:100%;border-radius:12px;border:2px solid var(--pink);margin-top:8px;">
+      </div>
+    </div>
+    <div style="font-size:13px;font-weight:800;margin:6px 0 10px;">交換に出せるグッズ一覧</div>
+    <div class="grid" id="tgrid"></div>
+  </div>
+</div>
+<div class="fbox">
+  <div style="font-weight:900;color:var(--text);margin-bottom:6px;">データについて</div>
+  登録データと写真は、このiPhone内に保存されます。定期的に「バックアップ書き出し」をおすすめします。
+  <div style="display:flex;gap:8px;margin:12px 0;">
+    <button type="button" class="bbtn" id="btn-exp">バックアップ書き出し</button>
+    <label class="bbtn">読み込み<input type="file" id="btn-imp" accept=".json" style="display:none;"></label>
+  </div>
+  <div style="text-align:center;margin-top:14px;font-weight:800;color:var(--pink);">Made with love for FRUITS ZIPPER</div>
+</div>
+<script>
+(function(){
+  var M = {
+    "月足天音": "#e63946",
+    "鎮西寿々歌": "#f77f00",
+    "櫻井優衣": "#2ec4b6",
+    "仲川瑠夏": "#9b5de5",
+    "真中まな": "#00bbf9",
+    "松本かれん": "#ff70a6",
+    "早瀬ノエル": "#f9c74f",
+    "全員・集合": "#ff6b9d"
+  };
+  var it = [];
+  try { it = JSON.parse(localStorage.getItem('fz_gc_v4') || '[]'); } catch(e) { it = []; }
+  var sf = 'all', cf = 'all', ti = '';
+
+  function sv() {
+    try { localStorage.setItem('fz_gc_v4', JSON.stringify(it)); } catch(e) {}
+  }
+
+  function esc(s) {
+    return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function cHtml(i) {
+    var col = M[i.m] || '#ff6b9d';
+    var sl = i.s === 'owned' ? '所持' : (i.s === 'trade' ? '譲' : '求');
+    var imgTag = i.img ? '<img src="' + i.img + '">' : '<span style="font-size:24px;font-weight:900;color:' + col + ';">FZ</span>';
+    var mmTag = i.mm ? '<div style="font-size:10px;color:#8c7a89;margin-bottom:4px;">' + esc(i.mm) + '</div>' : '';
